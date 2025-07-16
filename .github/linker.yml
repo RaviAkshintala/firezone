@@ -8,6 +8,11 @@ on:
 jobs:
   build-client-windows:
     runs-on: windows-2025  
+   
+    defaults:
+      run:
+       
+        working-directory: ./rust/gui-client
 
     steps:
       - name: Checkout repository
