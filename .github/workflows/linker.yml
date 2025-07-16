@@ -9,10 +9,6 @@ jobs:
   build-client-windows:
     runs-on: windows-2025-xlarge
    
-    defaults:
-      run:
-       
-        working-directory: ./rust/gui-client
 
     steps:
       - name: Checkout repository
