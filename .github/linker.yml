@@ -1,12 +1,13 @@
-
 name: Build Firezone Client (Windows)
 
 on:
   push:
-    
+    branches:
+      - test  
+
 jobs:
   build-client-windows:
-    runs-on:  windows-2025
+    runs-on: windows-2025  
 
     steps:
       - name: Checkout repository
@@ -24,7 +25,8 @@ jobs:
       - name: Install Cargo Tools
         uses: taiki-e/install-action@9ca1734d8940023f074414ee621fd530c4ce10f2 # v2.55.3
         with:
-          tool: cargo-nextest # Or any other tool you need
+          tool: cargo-nextest 
 
       - name: Build client
         run: cargo build -p firezone-gui-client --all-targets
+
