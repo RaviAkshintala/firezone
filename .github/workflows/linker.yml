@@ -1,0 +1,37 @@
+name: Build Firezone Client (Windows)
+
+on:
+  push:
+    branches:
+      - test  
+
+jobs:
+  build-client-windows:
+    runs-on: windows-2025  
+   
+    defaults:
+      run:
+       
+        working-directory: ./rust/gui-client
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node      
+        uses: ./.github/actions/setup-node
+
+      - name: Set up Rust
+        uses: ./.github/actions/setup-rust
+
+      - name: Set up Tauri v2
+        uses: ./.github/actions/setup-tauri-v2
+
+      - name: Install Cargo Tools
+        uses: taiki-e/install-action@9ca1734d8940023f074414ee621fd530c4ce10f2 # v2.55.3
+        with:
+          tool: cargo-nextest 
+
+      - name: Build client
+        run: cargo build -p firezone-gui-client --all-targets
+        
