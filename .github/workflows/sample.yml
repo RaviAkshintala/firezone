@@ -16,6 +16,10 @@ jobs:
           toolchain: stable
           override: true
 
+      - name: Install frontend dependencies
+        run: pnpm install
+             pnpm vite build
+
       - name: Build client
         run: cargo build -p firezone-gui-client --all-targets
         working-directory: ./rust/gui-client
