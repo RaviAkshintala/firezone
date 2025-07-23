@@ -18,3 +18,4 @@ jobs:
 
       - name: Build client
         run: cargo build -p firezone-gui-client --all-targets
+        working-directory: ./rust/gui-client
