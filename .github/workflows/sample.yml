@@ -17,8 +17,8 @@ jobs:
           override: true
 
       - name: Install frontend dependencies
-        run: pnpm install
-             pnpm vite build
+        run:  npm install
+              npm vite build
 
       - name: Build client
         run: cargo build -p firezone-gui-client --all-targets
